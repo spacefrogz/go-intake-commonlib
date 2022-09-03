@@ -1,4 +1,4 @@
-package client_field_validation
+package types
 
 type FieldValidationRule string
 
