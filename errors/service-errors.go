@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
+	"path/filepath"
+	"runtime"
 
 	"golang.org/x/exp/slices"
 )
@@ -14,13 +17,10 @@ type IntakeError struct {
 }
 
 func readJsonFile(zone string) ([]byte, error) {
-	pwd, err := os.Getwd()
+	_, b, _, _ := runtime.Caller(0)
+	d := path.Join(path.Dir(b))
 
-	if err != nil {
-		return nil, err
-	}
-
-	path := fmt.Sprintf(pwd+"/errors/%s-errors.json", zone)
+	path := fmt.Sprintf(filepath.Dir(d)+"/errors/%s-errors.json", zone)
 	bytes, err := os.ReadFile(path)
 
 	if err != nil {
