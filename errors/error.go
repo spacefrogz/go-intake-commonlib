@@ -12,6 +12,11 @@ import (
 	"golang.org/x/exp/slices"
 )
 
+const (
+	serviceZone   = "service"
+	presenterZone = "presenter"
+)
+
 func UnknownError() *IntakeError {
 	return &IntakeError{Code: "void", Message: "Unknown error."}
 }
@@ -48,7 +53,7 @@ func parseJsonFile(bytes []byte) ([]IntakeError, error) {
 
 func errorByCode(code string, zone string) (*IntakeError, error) {
 
-	bytes, err := readJsonFile("service")
+	bytes, err := readJsonFile(zone)
 
 	if err != nil {
 		return nil, err
