@@ -1,6 +1,14 @@
 [
     {
         "code": "SE-0001",
-        "message": "External User Identifier is required for this operation"
+        "message": "Data point exists."
+    },
+    {
+        "code": "SE-0002",
+        "message": "Data point could not be fetched."
+    },
+    {
+        "code": "SE-0003",
+        "message": "Data point could not created."
     }
 ]
