@@ -23,6 +23,7 @@ func UnknownError() *IntakeError {
 
 type IntakeError struct {
 	Code    string `json:"code"`
+	Slug    string `json:"slug"`
 	Message string `json:"message"`
 }
 
@@ -51,7 +52,7 @@ func parseJsonFile(bytes []byte) ([]IntakeError, error) {
 	return intakeErrors, nil
 }
 
-func errorByCode(code string, zone string) (*IntakeError, error) {
+func errorByCodeOrSlug(codeOrSlug string, zone string) (*IntakeError, error) {
 
 	bytes, err := readJsonFile(zone)
 
@@ -66,7 +67,7 @@ func errorByCode(code string, zone string) (*IntakeError, error) {
 	}
 
 	idx := slices.IndexFunc(intakeErrors, func(intakeError IntakeError) bool {
-		return intakeError.Code == code
+		return intakeError.Code == codeOrSlug || intakeError.Slug == codeOrSlug
 	})
 
 	if idx < 0 {

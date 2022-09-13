@@ -1,8 +1,19 @@
 package errors
 
-func SE(code string) *IntakeError {
+func SEC(code string) *IntakeError {
 
-	intakeError, err := errorByCode(code, serviceZone)
+	intakeError, err := errorByCodeOrSlug(code, serviceZone)
+
+	if err != nil {
+		return UnknownError()
+	}
+
+	return intakeError
+}
+
+func SES(slug string) *IntakeError {
+
+	intakeError, err := errorByCodeOrSlug(slug, serviceZone)
 
 	if err != nil {
 		return UnknownError()

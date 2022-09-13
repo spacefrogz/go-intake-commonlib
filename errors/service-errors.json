@@ -1,14 +1,17 @@
 [
     {
         "code": "SE-0001",
+        "slug": "data-point-exists",
         "message": "Data point exists."
     },
     {
         "code": "SE-0002",
+        "slug": "data-point-cant-fetch",
         "message": "Data point could not be fetched."
     },
     {
         "code": "SE-0003",
+        "slug": "data-point-cant-create",
         "message": "Data point could not created."
     }
 ]
